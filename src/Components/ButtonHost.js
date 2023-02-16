@@ -44,20 +44,6 @@ const ButtonHost = () => {
 
 export default ButtonHost;
 
-const Button = (props) => {
-  const [number, setNumber] = useState(0);
-  const handleButtonClick = () => {
-    setNumber(number + 1);
-    props.onClick();
-  };
-  return (
-    <button onClick={handleButtonClick}>
-      {props.name}
-      {props.addNumber ? ": " : ""}
-      {props.addNumber ? number : ""}
-    </button>
-  );
-};
 
 const SetButtonParameters = (props) => {
   const [buttonName, setButtonName] = useState("My Button");
@@ -104,5 +90,19 @@ const SetButtonParameters = (props) => {
         />
       </label>
     </form>
+  );
+};
+
+const Button = (props) => {
+  const [number, setNumber] = useState(0);
+  const handleButtonClick = () => {
+    setNumber(number + 1);
+    props.onClick();
+  };
+  return (
+    <button onClick={handleButtonClick}>
+      {props.name}
+      {props.addNumber ? `: ${number}` : ""}
+    </button>
   );
 };

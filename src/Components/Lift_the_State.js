@@ -13,7 +13,7 @@ const Lift_the_State = () => {
   };
 
   return (
-    <div>
+    <form>
       <span>passed as props: </span>
       <input type="text" value={message_Props} onChange={handleChange_Props} />
       <Child_Props message={message_Props} />
@@ -21,7 +21,7 @@ const Lift_the_State = () => {
       <span>passed as named variable: </span>
       <input type="text" value={message_Named} onChange={handleChange_Named} />
       <Child_Named message={message_Named} />
-    </div>
+    </form>
   );
 };
 

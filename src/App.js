@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./App.css";
 import Lift_the_State from "./Components/Lift_the_State";
 import ButtonHost from "./Components/ButtonHost";
 import ArrayComponent from "./Components/ArrayComponent";

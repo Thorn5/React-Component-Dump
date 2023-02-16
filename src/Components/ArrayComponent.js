@@ -52,7 +52,7 @@ const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
 
   return (
     <div>
-      <div>
+      <form>
         <input
           type="radio"
           name="method"
@@ -60,7 +60,8 @@ const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
           checked={selectedMethod === "id"}
           onChange={handleMethodChange}
         />
-        <label>Select by ID</label>
+        <label onClick={() => setSelectedMethod("id")}>Select by ID</label>{" "}
+        <br />
         <input
           type="radio"
           name="method"
@@ -68,7 +69,10 @@ const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
           checked={selectedMethod === "firstName"}
           onChange={handleMethodChange}
         />
-        <label>Select by First Name</label>
+        <label onClick={() => setSelectedMethod("firstName")}>
+          Select by First Name
+        </label>
+        <br />
         <input
           type="radio"
           name="method"
@@ -76,13 +80,16 @@ const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
           checked={selectedMethod === "surname"}
           onChange={handleMethodChange}
         />
-        <label>Select by Surname</label>
-      </div>
-      <select value={selectedOption} onChange={handleOptionChange}>
-        {options.map((option, index) => (
-          <option key={index}>{option}</option>
-        ))}
-      </select>
+        <label onClick={() => setSelectedMethod("surname")}>
+          Select by Surname
+        </label>
+        <br />
+        <select value={selectedOption} onChange={handleOptionChange}>
+          {options.map((option, index) => (
+            <option key={index}>{option}</option>
+          ))}
+        </select>
+      </form>
       {selectedStudent && (
         <p>
           {selectedStudent.firstName} {selectedStudent.surname} - Enrolled:{" "}
