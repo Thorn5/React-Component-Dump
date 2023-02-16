@@ -1,13 +1,16 @@
-import './App.css';
+import "./styles.css";
+import Lift_the_State from "./Components/Lift_the_State";
+import ButtonHost from "./Components/ButtonHost";
+import ArrayComponent from "./Components/ArrayComponent";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-    <h3>Main Branch</h3>
-    <p>This app was created using a clean bootstrapped react template.</p>
-    <p>The stock react App.js code has been removed.</p>
+      <Lift_the_State />
+      <hr />
+      <ButtonHost />
+      <hr />
+      <ArrayComponent />
     </div>
   );
 }
-
-export default App;
