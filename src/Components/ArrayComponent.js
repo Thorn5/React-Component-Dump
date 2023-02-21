@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { arrayData } from "./arrayData";
+import { ArrayData } from "./arrayData";
 
 const ArrayComponent = () => {
   const [selectedMethod, setSelectedMethod] = useState("id");
@@ -7,7 +7,7 @@ const ArrayComponent = () => {
   return (
     <div>
       <PresentArray
-        arrayData={arrayData}
+        ArrayData={ArrayData}
         selectedMethod={selectedMethod}
         setSelectedMethod={setSelectedMethod}
       />
@@ -17,11 +17,11 @@ const ArrayComponent = () => {
 
 export default ArrayComponent;
 
-const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
+const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
   const [selectedOption, setSelectedOption] = useState("1");
   const [options, setOptions] = useState([]);
 
-  const selectedStudent = arrayData.find(
+  const selectedStudent = ArrayData.find(
     (student) => student.id === selectedOption ||
       student.firstName === selectedOption ||
       student.surname === selectedOption
@@ -38,7 +38,7 @@ const PresentArray = ({ arrayData, selectedMethod, setSelectedMethod }) => {
 
   useEffect(() => {
     let optionsArr = [];
-    arrayData.forEach((student) => {
+    ArrayData.forEach((student) => {
       if (selectedMethod === "id") {
         optionsArr.push(student.id);
       } else if (selectedMethod === "firstName") {

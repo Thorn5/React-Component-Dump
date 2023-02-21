@@ -1,4 +1,4 @@
-export const arrayData = [
+export const ArrayData = [
   {
     id: "1",
     firstName: "Andre",
