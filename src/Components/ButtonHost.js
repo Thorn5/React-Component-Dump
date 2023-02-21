@@ -3,40 +3,20 @@ import React, { useState } from "react";
 const ButtonHost = () => {
   const [buttonName, setButtonName] = useState("My Button");
   const [showAlert, setShowAlert] = useState(false);
-  const [addNumber, setAddNumber] = useState(false);
-
-  const handleNameChange = (name) => {
-    setButtonName(name);
-  };
-
-  const handleCheckboxChange = (isChecked) => {
-    setShowAlert(isChecked);
-  };
-
-  const handleAddNumberChange = (isChecked) => {
-    setAddNumber(isChecked);
-  };
-
-  const handleButtonClick = () => {
-    if (showAlert) {
-      console.log(buttonName);
-      alert(buttonName);
-    } else {
-      console.log(buttonName);
-    }
-  };
+  const [showNumOnButton, setShowNumOnButton] = useState(false);
 
   return (
     <div>
       <SetButtonParameters
-        onNameChange={handleNameChange}
-        onCheckboxChange={handleCheckboxChange}
-        onAddNumberChange={handleAddNumberChange}
+        buttonName={buttonName}
+        setButtonName={setButtonName}
+        setShowAlert={setShowAlert}
+        setShowNumOnButton={setShowNumOnButton}
       />
-      <Button
-        name={buttonName}
-        onClick={handleButtonClick}
-        addNumber={addNumber}
+      <DisplayButton
+        buttonName={buttonName}
+        showAlert={showAlert}
+        showNumOnButton={showNumOnButton}
       />
     </div>
   );
@@ -44,40 +24,37 @@ const ButtonHost = () => {
 
 export default ButtonHost;
 
-
 const SetButtonParameters = (props) => {
-  const [buttonName, setButtonName] = useState("My Button");
-  const [showAlert, setShowAlert] = useState(false);
-  const [addNumber, setAddNumber] = useState(false);
-
   const handleNameChange = (event) => {
-    setButtonName(event.target.value);
-    props.onNameChange(event.target.value);
+    props.setButtonName(event.target.value);
   };
 
-  const handleCheckboxChange = (event) => {
-    setShowAlert(event.target.checked);
-    props.onCheckboxChange(event.target.checked);
+  const handleSetShowCheck = (event) => {
+    props.setShowAlert(event.target.checked);
   };
 
-  const handleAddNumberChange = (event) => {
-    setAddNumber(event.target.checked);
-    props.onAddNumberChange(event.target.checked);
+  const handleShowClicksOnButton = (event) => {
+    props.setShowNumOnButton(event.target.checked);
   };
 
   return (
     <form>
       <label>
         Button Text:
-        <input type="text" value={buttonName} onChange={handleNameChange} />
+        <input
+          type="text"
+          // value={props.buttonName}
+          placeholder={props.buttonName}
+          onChange={handleNameChange}
+        />
       </label>
       <br />
       <label>
         Show Alert:
         <input
           type="checkbox"
-          checked={showAlert}
-          onChange={handleCheckboxChange}
+          checked={props.showAlert}
+          onChange={handleSetShowCheck}
         />
       </label>
       <br />
@@ -85,24 +62,30 @@ const SetButtonParameters = (props) => {
         Show Clicks on Button:
         <input
           type="checkbox"
-          checked={addNumber}
-          onChange={handleAddNumberChange}
+          checked={props.showNumOnButton} //?needed???
+          onChange={handleShowClicksOnButton}
         />
       </label>
     </form>
   );
 };
 
-const Button = (props) => {
-  const [number, setNumber] = useState(0);
+const DisplayButton = (props) => {
+  const [clickCount, setClickCount] = useState(0);
   const handleButtonClick = () => {
-    setNumber(number + 1);
-    props.onClick();
+    setClickCount(clickCount + 1);
+    if (props.showAlert) {
+      console.log(props.buttonName, clickCount + 1);
+      alert(props.buttonName);
+    } else {
+      console.log(props.buttonName, clickCount + 1);
+    }
   };
+
   return (
     <button onClick={handleButtonClick}>
-      {props.name}
-      {props.addNumber ? `: ${number}` : ""}
+      {props.buttonName}
+      {props.showNumOnButton ? `: ${clickCount}` : ""}
     </button>
   );
 };

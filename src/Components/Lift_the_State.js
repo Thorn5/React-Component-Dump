@@ -15,11 +15,21 @@ const Lift_the_State = () => {
   return (
     <form>
       <span>passed as props: </span>
-      <input type="text" value={message_Props} onChange={handleChange_Props} />
+      <input 
+      type="text" 
+      // value={message_Props} 
+      placeholder={message_Props} 
+      onChange={handleChange_Props} 
+      />
       <Child_Props message={message_Props} />
       <br />
       <span>passed as named variable: </span>
-      <input type="text" value={message_Named} onChange={handleChange_Named} />
+      <input 
+      type="text" 
+      // value={message_Named} 
+      placeholder={message_Named} 
+      onChange={handleChange_Named} 
+      />
       <Child_Named message={message_Named} />
     </form>
   );
