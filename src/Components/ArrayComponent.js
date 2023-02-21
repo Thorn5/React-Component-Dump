@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrayData } from "./arrayData";
+import { ArrayData } from "./ArrayData";
 
 const ArrayComponent = () => {
   const [selectedMethod, setSelectedMethod] = useState("id");
@@ -48,7 +48,7 @@ const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
       }
     });
     setOptions(optionsArr);
-  }, [selectedMethod]);
+  }, [ArrayData,selectedMethod]);
 
   return (
     <div>
@@ -57,7 +57,7 @@ const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
           type="radio"
           name="method"
           value="id"
-          checked={selectedMethod === "id"}
+          // checked={selectedMethod === "id"}
           onChange={handleMethodChange} />
         <label onClick={() => setSelectedMethod("id")}>Select by ID</label>{" "}
         <br />
@@ -65,7 +65,7 @@ const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
           type="radio"
           name="method"
           value="firstName"
-          checked={selectedMethod === "firstName"}
+          // checked={selectedMethod === "firstName"}
           onChange={handleMethodChange} />
         <label onClick={() => setSelectedMethod("firstName")}>
           Select by First Name
@@ -75,7 +75,7 @@ const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
           type="radio"
           name="method"
           value="surname"
-          checked={selectedMethod === "surname"}
+          // checked={selectedMethod === "surname"}
           onChange={handleMethodChange} />
         <label onClick={() => setSelectedMethod("surname")}>
           Select by Surname

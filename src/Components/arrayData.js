@@ -91,7 +91,7 @@ export const ArrayData = [
   },
   {
     id: "16",
-    firstName: "Emily",
+    firstName: "Angel",
     surname: "Anderson",
     enrolled: true,
   },
