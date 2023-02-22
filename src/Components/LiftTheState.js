@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Lift_the_State = () => {
+const LiftTheState = () => {
   const [message_Props, setMessage_Props] = useState("props");
   const [message_Named, setMessage_Named] = useState("named variable");
 
@@ -35,7 +35,7 @@ const Lift_the_State = () => {
   );
 };
 
-export default Lift_the_State;
+export default LiftTheState;
 
 const Child_Props = (props) => {
   return <div>{props.message}</div>;
