@@ -1,5 +1,5 @@
 import React , {useState} from "react";
-import useFetch from "./useFetch";
+// import useFetch from "./useFetch";
 
 const RecipeUseFetch = () => {
   // const url ="https://cdn.contentful.com/spaces/75958qusqnzq/environments/master/entries" + process.env.REACT_APP_API_ACCESS_TOKEN;
@@ -9,7 +9,7 @@ const RecipeUseFetch = () => {
   const loading = false
   const error = null
   
-  console.log(data);
+  // console.log(data);
 
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
@@ -18,6 +18,8 @@ const RecipeUseFetch = () => {
     const selectedRecipe = data.items[selectedRecipeIndex];
     setSelectedRecipe(selectedRecipe);
   }
+
+  
 
   return (
     <>
@@ -29,8 +31,8 @@ const RecipeUseFetch = () => {
         <div>
           <form>
             {data.items.map((item, index) => (
-              // <div key={index}>
-                <label key={index}>
+              <div key={index}>
+                <label>
                   <input
                     type="radio"
                     name="recipe"
@@ -39,7 +41,7 @@ const RecipeUseFetch = () => {
                   />
                   {item.fields.recipeName}
                 </label>
-              // </div>
+              </div>
             ))}
           </form>
         </div>
@@ -55,46 +57,16 @@ const RecipeUseFetch = () => {
             ))}
           </ul>
           <p>Method:</p>
-          <ol>
+          <ul>
             {selectedRecipe.fields.method.map((method, index) => (
               <li key={index}>{method}</li>
             ))}
-          </ol>
+          </ul>
         </div>
       )}
     </>
   );
 
-  // Original Return
-  // return (
-  //   <>
-  //     {loading ? (
-  //       <p>Loading...</p>
-  //     ) : error ? (
-  //       `${error}`
-  //     ) : (
-  //       <div>
-  //         {data.items.map((item, index) => (
-  //           <div key={index}>
-  //             <h2>{item.fields.recipeName}</h2>
-  //             <h3>Ingredients:</h3>
-  //             <ol>
-  //               {item.fields.ingredients.map((ingredient, index) => (
-  //                 <li key={index}>{ingredient}</li>
-  //               ))}
-  //             </ol>
-  //             <h3>Method:</h3>
-  //             <ol>
-  //               {item.fields.method.map((method, index) => (
-  //                 <li key={index}>{method}</li>
-  //               ))}
-  //             </ol>
-  //           </div>
-  //         ))}
-  //       </div>
-  //     )}
-  //   </>
-  // );
 };
 
 export default RecipeUseFetch;
@@ -1232,3 +1204,34 @@ const RecipeArray = {
     ]
   }
 }
+
+  // Original Return
+  // return (
+  //   <>
+  //     {loading ? (
+  //       <p>Loading...</p>
+  //     ) : error ? (
+  //       `${error}`
+  //     ) : (
+  //       <div>
+  //         {data.items.map((item, index) => (
+  //           <div key={index}>
+  //             <h2>{item.fields.recipeName}</h2>
+  //             <h3>Ingredients:</h3>
+  //             <ol>
+  //               {item.fields.ingredients.map((ingredient, index) => (
+  //                 <li key={index}>{ingredient}</li>
+  //               ))}
+  //             </ol>
+  //             <h3>Method:</h3>
+  //             <ol>
+  //               {item.fields.method.map((method, index) => (
+  //                 <li key={index}>{method}</li>
+  //               ))}
+  //             </ol>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     )}
+  //   </>
+  // );
