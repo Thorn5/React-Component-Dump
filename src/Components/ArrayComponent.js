@@ -2,97 +2,28 @@ import React, { useState, useEffect } from "react";
 import { ArrayData } from "./ArrayData";
 
 const ArrayComponent = () => {
-  const [selectedMethod, setSelectedMethod] = useState("id");
+  // Declare state variable that will hold the array of data
+  const [arrayData, setArrayData] = useState([]);
 
-  return (
-    <div>
-      <PresentArray
-        ArrayData={ArrayData}
-        selectedMethod={selectedMethod}
-        setSelectedMethod={setSelectedMethod}
-      />
-    </div>
-  );
+  // Use useEffect hook to fetch array data
+  useEffect(() => {
+    setArrayData(ArrayData);
+  }, []);
+
+  // Map over arrayData and render the result
+  const renderArrayData = arrayData.map((item) => {
+    // console.log(item);
+    return (
+      <div key={item.id}>
+        Name: {item.firstName} {item.surname} - Enrolled:{" "}
+        {item.enrolled ? "Yes" : "No"}
+      </div>
+    );
+  });
+
+  // console.log(renderArrayData[5].props.children[3]);
+
+  return <div>{renderArrayData}</div>;
 };
 
 export default ArrayComponent;
-
-const PresentArray = ({ ArrayData, selectedMethod, setSelectedMethod }) => {
-  const [selectedOption, setSelectedOption] = useState("1");
-  const [options, setOptions] = useState([]);
-
-  const selectedStudent = ArrayData.find(
-    (student) => student.id === selectedOption ||
-      student.firstName === selectedOption ||
-      student.surname === selectedOption
-  );
-
-  const handleMethodChange = (e) => {
-    setSelectedMethod(e.target.value);
-    setOptions([]);
-  };
-
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
-
-  useEffect(() => {
-    let optionsArr = [];
-    ArrayData.forEach((student) => {
-      if (selectedMethod === "id") {
-        optionsArr.push(student.id);
-      } else if (selectedMethod === "firstName") {
-        optionsArr.push(student.firstName);
-      } else {
-        optionsArr.push(student.surname);
-      }
-    });
-    setOptions(optionsArr);
-  }, [ArrayData,selectedMethod]);
-
-  return (
-    <div>
-      <form>
-        <input
-          type="radio"
-          name="method"
-          value="id"
-          // checked={selectedMethod === "id"}
-          onChange={handleMethodChange} />
-        <label onClick={() => setSelectedMethod("id")}>Select by ID</label>{" "}
-        <br />
-        <input
-          type="radio"
-          name="method"
-          value="firstName"
-          // checked={selectedMethod === "firstName"}
-          onChange={handleMethodChange} />
-        <label onClick={() => setSelectedMethod("firstName")}>
-          Select by First Name
-        </label>
-        <br />
-        <input
-          type="radio"
-          name="method"
-          value="surname"
-          // checked={selectedMethod === "surname"}
-          onChange={handleMethodChange} />
-        <label onClick={() => setSelectedMethod("surname")}>
-          Select by Surname
-        </label>
-        <br />
-        <select value={selectedOption} onChange={handleOptionChange}>
-          {options.map((option, index) => (
-            <option key={index}>{option}</option>
-          ))}
-        </select>
-      </form>
-      {selectedStudent && (
-        <p>
-          {selectedStudent.firstName} {selectedStudent.surname} - Enrolled:{" "}
-          {selectedStudent.enrolled ? "Yes" : "No"}
-        </p>
-      )}
-    </div>
-  );
-};
