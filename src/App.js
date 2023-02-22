@@ -1,22 +1,26 @@
 import "./App.css";
-import LiftTheState from "./Components/LiftTheState";
-import ButtonHost from "./Components/ButtonHost";
-import ArrayComponent from "./Components/ArrayComponent";
-import RecipeArray from "./Components/RecipeArray";
-import ImplementUseFetch from "./Components/ImplementUseFetch";
+// import LiftTheState from "./Components/LiftTheState";
+// import ButtonHost from "./Components/ButtonHost";
+// import ArrayComponent from "./Components/ArrayComponent";
+import RecipeUseFetch from "./Components/RecipeUseFetch";
 
-export default function App() {
-  console.log(RecipeArray);
+// console.log(RecipeArray);
+
+const App = () => {
   return (
     <div className="App">
-      <LiftTheState />
+      {/* <LiftTheState />
       <hr />
       <ButtonHost />
       <hr />
       <ArrayComponent />
-      <hr />
-      <ImplementUseFetch />
+      <hr /> */}
+      <RecipeUseFetch />
     </div>
   );
 }
 
+export default App
+
+// Next API:
+// https://official-joke-api.appspot.com/random_ten

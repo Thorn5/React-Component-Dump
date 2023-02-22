@@ -1,3 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  text-align: left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 13px;
 }
