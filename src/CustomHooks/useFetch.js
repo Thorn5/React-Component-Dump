@@ -1,11 +1,11 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from "react";
 
 // Works just fine
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = () => {
@@ -13,21 +13,19 @@ const useFetch = (url) => {
         .then((response) => response.json())
         .then((data) => setData(data))
         .catch((err) => {
-          setError(err)
+          setError(err);
         })
         .finally(() => {
-          setLoading(false)
-        })
-    }
-    fetchData()
+          setLoading(false);
+        });
+    };
+    fetchData();
   }, []);
 
-  return(
-    { data, loading, error }
-  )
+  return { data, loading, error };
 };
 
-export default useFetch
+export default useFetch;
 
 // use: const { data, loading, error } = useFetch(url);
 // Parent return: (<>{loading ? (<p>Loading...</p>) : error ? `${error}` : <div> "data presentation" </div>}</>)
