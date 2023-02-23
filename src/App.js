@@ -1,7 +1,7 @@
 import "./App.css";
-// import LiftTheState from "./Components/LiftTheState";
-// import ButtonHost from "./Components/ButtonHost";
-// import ArrayComponent from "./Components/ArrayComponent";
+import LiftTheState from "./Components/LiftTheState";
+import ButtonHost from "./Components/ButtonHost";
+import ArrayComponent from "./Components/ArrayComponent";
 import RecipeUseFetch from "./Components/RecipeUseFetch";
 
 // console.log(RecipeArray);
@@ -9,12 +9,12 @@ import RecipeUseFetch from "./Components/RecipeUseFetch";
 const App = () => {
   return (
     <div className="App">
-      {/* <LiftTheState />
+      <LiftTheState />
       <hr />
       <ButtonHost />
       <hr />
       <ArrayComponent />
-      <hr /> */}
+      <hr />
       <RecipeUseFetch />
     </div>
   );

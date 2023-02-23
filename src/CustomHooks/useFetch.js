@@ -29,5 +29,5 @@ const useFetch = (url) => {
 
 export default useFetch
 
+// use: const { data, loading, error } = useFetch(url);
 // Parent return: (<>{loading ? (<p>Loading...</p>) : error ? `${error}` : <div> "data presentation" </div>}</>)
-
